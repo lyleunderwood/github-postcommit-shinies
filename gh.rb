@@ -25,6 +25,7 @@ def get_labels(user, repo, issue)
     c.http_auth_types = :basic
     c.username = options.gh_user
     c.password = options.gh_token
+    c.ssl_verify_host = false
     c.perform
     json = JSON.parse(c.body_str)
     json['issue']['labels']
@@ -36,6 +37,7 @@ def add_label(user, repo, issue, label)
     c.http_auth_types = :basic
     c.username = options.gh_user
     c.password = options.gh_token
+    c.ssl_verify_host = false
     c.perform
     p c.body_str
 end
@@ -46,6 +48,7 @@ def assign_issue(user, repo, issue, assignee)
         c.http_auth_types = :basic
         c.username = options.gh_user
         c.password = options.gh_token
+        c.ssl_verify_host = false
     end
     p curl.body_str
 end
